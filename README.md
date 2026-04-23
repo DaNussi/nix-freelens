@@ -11,7 +11,7 @@ nix run 'github:DaNussi/nix-freelens'
 ## Platforms
 
 - x86_64-linux
-- aarch64-linux
+- aarch64-linux (not tested)
 
 ## Thanks
 
