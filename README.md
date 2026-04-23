@@ -5,11 +5,7 @@ Nix flake for packaging Freelens - Free IDE for Kubernetes.
 ## Quick Start
 
 ```bash
-# Build package
-nix build
-
-# Run Freelens
-nix run
+nix run 'github:DaNussi/nix-freelens'
 ```
 
 ## Platforms
@@ -17,4 +13,6 @@ nix run
 - x86_64-linux
 - aarch64-linux
 
-Automatically downloads the correct pre-built binary for your architecture.
+## Thanks
+
+Thank you to the Freelens community for building this amazing Kubernetes IDE!
