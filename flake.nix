@@ -12,17 +12,36 @@
       imports = [];
       systems = systems;
       perSystem = { config, self', inputs', pkgs, system, ... }: let
-            version = "1.8.1";
+            version = "1.9.0";
             pname = "freelens";
 
 
             srcData = if pkgs.system == "aarch64-linux" then {
               url = "https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-arm64.deb";
-              sha256 = "394ae4ccc61fdf53e9a200c432d73d2ee7b497adee0b422c8d4138a77437123a";
+              sha256 = "98f12fb594c7bb1cd7eee900603acc657daaa7911d58b83e45dd8783eaac8551";
             } else if pkgs.system == "x86_64-linux" then {
               url = "https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.deb";
-              sha256 = "4b5bc4c87dd26251479157216a0f08baf815279e0e439b697de457e86839b748";
+              sha256 = "1b1588e487513eb530ab84cbd55a8bfeba6308e058bd5259c9861deccb8acda6";
             } else {};
+
+            freelens-desktop = pkgs.makeDesktopItem {
+                name = "freelens";
+                exec = "freelens";
+                desktopName = "Freelens";
+                genericName = "Freelens";
+                icon = ./icon.svg;
+                comment = "Free IDE for Kubernetes";
+                categories = [ "Utility" ];
+                terminal = false;
+                keywords = [
+                  "freelens"
+                  "truelens"
+                  "kubernetes"
+                  "k8s"
+                  "k3s"
+                  "k9s"
+                ];
+            };
             
         in {
           packages.default = self'.packages.freelens;
@@ -59,6 +78,8 @@
               maintainers = [];
               platforms = systems;
             };
+
+            desktopItems = [ freelens-desktop ];
           };
       };
   };
