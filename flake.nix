@@ -12,16 +12,16 @@
       imports = [];
       systems = systems;
       perSystem = { config, self', inputs', pkgs, system, ... }: let
-            version = "1.9.0";
+            version = "1.10.3";
             pname = "freelens";
 
 
             srcData = if pkgs.system == "aarch64-linux" then {
               url = "https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-arm64.deb";
-              sha256 = "98f12fb594c7bb1cd7eee900603acc657daaa7911d58b83e45dd8783eaac8551";
+              sha256 = "034e675e14bd90a4d933f60039ac07722a1f9db9d669548a7435db6b90a657db";
             } else if pkgs.system == "x86_64-linux" then {
               url = "https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.deb";
-              sha256 = "1b1588e487513eb530ab84cbd55a8bfeba6308e058bd5259c9861deccb8acda6";
+              sha256 = "f25b7dadbc9e3a7f19b550457d913d01ecbb9c619d7dc7e84dc34995567673b4";
             } else {};
 
             freelens-desktop = pkgs.makeDesktopItem {
@@ -61,6 +61,7 @@
               gtk3
               nss
               alsa-lib
+              musl
             ];
 
             unpackPhase = "true";
